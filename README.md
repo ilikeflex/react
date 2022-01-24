@@ -2,6 +2,6 @@
 Putting Some React Samples
 
 #Hooks
-../src/images/ReactHooks.png
-../src/images/ReactHooksWhereToUse.png
-../src/images/useEffect.png
+![This is an image](../src/images/ReactHooks.png)
+![This is an image](../src/images/ReactHooksWhereToUse.png)
+![This is an image](../src/images/useEffect.png)
