@@ -1,0 +1,9 @@
+{
+  "movies" : {
+    "-Mv2NafHIy85SU6sovvk" : {
+      "openingText" : "Opening Text First Sample Movie",
+      "releaseDate" : "02-02-1987",
+      "title" : "First Sample Movie"
+    }
+  }
+}
