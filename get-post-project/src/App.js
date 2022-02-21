@@ -33,7 +33,7 @@ function App() {
   // }
 
   //Step 2:
-  //Conver to async/await
+  //Convert to async/await
   //While using async/await ....try/catch is used for error handling
   //fetch api does not throw error while 
 
