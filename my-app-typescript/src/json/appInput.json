@@ -1,0 +1,25 @@
+{
+  "access" : {
+    "hr" : false,
+    "reports" : true
+  },
+  "cart" : {
+    "items" : [ {
+      "description" : "This is a second product - amazing!",
+      "id" : 2,
+      "price" : 16,
+      "quantity" : 1,
+      "title" : "Test2",
+      "total" : 16
+    } ],
+    "totalQuantity" : 1
+  },
+  "user" : {
+    "country" : "US",
+    "dept" : "finance",
+    "designation" : "Developer",
+    "employeeID" : 55,
+    "name" : "Alex",
+    "state" : "NJ"
+  }
+}

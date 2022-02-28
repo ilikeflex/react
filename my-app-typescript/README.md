@@ -1,3 +1,10 @@
+# Links
+
+https://blog.learncodeonline.in/functions-in-typescript#heading-declare-an-arrow-function
+
+https://johnlindquist.com/rxjs-pipes/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

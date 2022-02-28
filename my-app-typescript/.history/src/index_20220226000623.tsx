@@ -5,10 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { appConfig } from './configs/appConfig';
 import { Loading } from './components/loading/Loading'
-import { allIntialRequestComplete, getUserDetailsAndAuthorisation } from './init';
+import { allIntialRequestComplete } from './init';
 
-const envConfig = appConfig.getConfig();
+const envConfig = appConfig.getConfiguration();
 console.log(envConfig.toString());
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,11 +19,7 @@ ReactDOM.render(
 );
 
 allIntialRequestComplete.subscribe(response => {
-  getUserDetailsAndAuthorisation().subscribe(compleUserDetails => {
-    console.log(' compleUserDetails ' + JSON.stringify(compleUserDetails))
-    loadApplication();
-    }
-  );
+  loadApplication();
 })
 
 const loadApplication = () => {

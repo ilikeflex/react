@@ -7,11 +7,11 @@ import { appConfig } from './configs/appConfig';
 import { Loading } from './components/loading/Loading'
 import { allIntialRequestComplete, getUserDetailsAndAuthorisation } from './init';
 
-const envConfig = appConfig.getConfig();
+const envConfig = appConfig.getConfiguration();
 console.log(envConfig.toString());
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.StrictMode>s
     <Loading />
   </React.StrictMode>,
   document.getElementById('root')

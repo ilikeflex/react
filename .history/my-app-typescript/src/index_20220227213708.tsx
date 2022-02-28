@@ -11,7 +11,7 @@ const envConfig = appConfig.getConfig();
 console.log(envConfig.toString());
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.StrictMode>s
     <Loading />
   </React.StrictMode>,
   document.getElementById('root')
