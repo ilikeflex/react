@@ -5,4 +5,3 @@ export interface IUserAuthorisation {
     user:IUser;
     auth:IAuth;
 }
-

@@ -42,6 +42,7 @@ export const getUserDetails = (id:number): Observable<User> => {
   const observable: Observable<User> = new Observable (async observer => {
     const response = await fetch(`https://react-app-a5e65-default-rtdb.firebaseio.com/user.json?employeeID=${id}`);
     if(!response.ok) {
+        console.log(`Error in user details: StatusText=${response.statusText} ,status=${response.status}`);
         observer.error('Error in user details ' + JSON.stringify(response));  
     }
     const data = await response.json();

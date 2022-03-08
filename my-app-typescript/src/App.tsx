@@ -3,6 +3,7 @@ import './App.css';
 import Todos from './components/Todos';
 import Todo from './models/Todo';
 import NewTodo from './components/NewTodo';
+import CounterContainer from './components/counter/CounterContainer';
 
 
 function App() {
@@ -51,11 +52,13 @@ const removeTodoHandler = (todoId: string) => {
     <div>
       <NewTodo onAddTodo={addTodoHandler}/>
       <Todos items={todos} onRemoveTodo={removeTodoHandler}/>
+      <CounterContainer backgroundColor='red'/>
     </div>
 
   );
 }
 
+export default App;
 
 /*
 function App() {
@@ -91,4 +94,3 @@ function App() {
   );
 }
 */
-export default App;
