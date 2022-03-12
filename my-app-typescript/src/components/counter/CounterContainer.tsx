@@ -2,14 +2,25 @@ import { Counter  } from "./Counter";
 
 import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from "../../store/rootState";
+import { ActionsConstants } from "../action/actions";
 
-const mapState = (state: RootState) => ({
-  value: state.value,
-})
+
+const mapState = (state: RootState) => {
+  console.log('Counter maptoState is called -> Counter is refreshed')
+  return {value: state.value}
+}
 
 const mapDispatch = {
-    onIncrement: () => ({ type: 'counter/incremented' }),
-    onDecrement: () => ({ type: 'counter/decremented' }),
+    onIncrement: () => ({ type: ActionsConstants.INCREMENT }),
+    onDecrement: () => ({ type: ActionsConstants.DECREMENT }),
+    onIncrementByCustomValue: () => ({
+        type: ActionsConstants.CUSTOM_INCREMENT,
+        value: 10
+    }),
+    runEpic: () => ({
+      type: ActionsConstants.PING,
+    })
+
 }
 
 const connector = connect(mapState, mapDispatch);
@@ -24,6 +35,8 @@ interface StateProps {
 interface DispatchProps {
   onIncrement: () => void;
   onDecrement: () => void;
+  onIncrementByCustomValue: () => void;
+  runEpic: () => void;
 }
 
 //own props

@@ -1,7 +1,5 @@
-import { Spinner } from "@fluentui/react";
 import React from "react";
-import logo from '../../logo.svg'
-import { IAppError, IPropertyAppError } from "../../models/Error";
+import { IPropertyAppError } from "../../models/Error";
 
 export type ErrorProps = IPropertyAppError
 

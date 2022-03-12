@@ -1,4 +1,5 @@
-import { RootState } from "./rootState"
+import { ActionsConstants } from "../components/action/actions"
+import { IRootState } from "./rootState"
 
 /**
  * This is a reducer - a function that takes a current state value and an
@@ -12,12 +13,16 @@ import { RootState } from "./rootState"
  * You can use any conditional logic you want in a reducer. In this example,
  * we use a switch statement, but it's not required.
  */
-export function counterReducer(state:RootState = { value: 0 }, action : any) {
+//TODO -> How to pass intital state if the initial state is big object
+export function counterReducer(state:IRootState = { value: 0 }, action : any) {
+  console.log(`Action Type= ${action.type}`)
   switch (action.type) {
-    case 'counter/incremented':
+    case ActionsConstants.INCREMENT:
       return { value: state.value + 1 }
-    case 'counter/decremented':
+    case ActionsConstants.DECREMENT:
       return { value: state.value - 1 }
+    case ActionsConstants.CUSTOM_INCREMENT:
+      return { value: state.value + action.value }
     default:
       return state
   }

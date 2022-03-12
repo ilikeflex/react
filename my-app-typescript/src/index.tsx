@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {render} from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -12,8 +11,6 @@ import { store } from './store/appstore';
 import { AppError } from './components/loading/AppError';
 import { IAppError } from './models/Error';
 
-
-
 const envConfig = appConfig.getConfig();
 console.log(envConfig.toString());
 
@@ -24,13 +21,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-/* allIntialRequestComplete.subscribe(response => {
-  getUserDetailsAndAuthorisation().subscribe(compleUserDetails => {
-    console.log(' compleUserDetails ' + JSON.stringify(compleUserDetails))
-    loadApplication();
-    }
-  );
-}) */
 
 allIntialRequestComplete.subscribe(response => {
   getUserDetailsAndAuthorisation().subscribe({

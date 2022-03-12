@@ -13,8 +13,12 @@ export const Counter: React.FC<Props> = (props:Props) => {
       setTimeout(props.onIncrement, 1000)
     }
 
+    const runEpic = () => {
+      props.runEpic();
+    }
+
     return (
-        <p>
+      <p>
         Clicked: {props.value} times
         {' '}
         <button onClick={props.onIncrement}>
@@ -25,12 +29,19 @@ export const Counter: React.FC<Props> = (props:Props) => {
           -
         </button>
         {' '}
+        <button onClick={props.onIncrementByCustomValue}>
+          Increment by 10
+        </button>
+        {' '}
         <button onClick={incrementIfOdd}>
           Increment if odd
         </button>
         {' '}
         <button onClick={incrementAsync}>
           Increment async
+        </button>
+        <button onClick={runEpic}>
+          Try Epic
         </button>
       </p>
     );
