@@ -13,6 +13,7 @@ function AddMovie(props) {
     // could add validation here...
 
     const movie = {
+      key: Math.random() * 10,
       title: titleRef.current.value,
       openingText: openingTextRef.current.value,
       releaseDate: releaseDateRef.current.value,

@@ -4,6 +4,7 @@ import Todos from './components/Todos';
 import Todo from './models/Todo';
 import NewTodo from './components/NewTodo';
 import CounterContainer from './components/counter/CounterContainer';
+import { SampleComponent } from './components/counter/SampleComponent';
 
 
 function App() {
@@ -53,6 +54,12 @@ const removeTodoHandler = (todoId: string) => {
       <NewTodo onAddTodo={addTodoHandler}/>
       <Todos items={todos} onRemoveTodo={removeTodoHandler}/>
       <CounterContainer backgroundColor='red'/>
+      {/**
+       * These are JSX Comments.
+       * We are adding SampleComponent to show, how the parent component renders is also creating child compoments to renderer.
+       */
+      }
+      <SampleComponent />
     </div>
 
   );

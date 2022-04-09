@@ -84,7 +84,8 @@ const fetchMoviesHandler = useCallback(async () =>  {
     setIsloading(true);
     try{
       // Free FireBase API https://react-app-a5e65-default-rtdb.firebaseio.com/ ( login with newtouchme@gmail.com, valid for 30 days )
-      const response = await fetch("https://react-app-a5e65-default-rtdb.firebaseio.com/movies.json"); // await will wait till the response is received from server
+      // Changed to http://localhost:3000/movies ( local JSON Server )
+      const response = await fetch("http://localhost:3000/movies"); // await will wait till the response is received from server
       
       if(!response.ok) {
         const errorMessage = `Server Error Response = ${response.status} ,url = ${response.url}`;
@@ -123,9 +124,15 @@ const fetchMoviesHandler = useCallback(async () =>  {
   }, [fetchMoviesHandler])
 
 
+  let count = 0;
+  const clickMultipleTimes = () => {
+    ++count;
+    console.log("Count is =", count);
+  }
+
   const addMovieHandler = async (movie) => {
     try {
-      const response = await fetch("https://react-app-a5e65-default-rtdb.firebaseio.com/movies.json",{ // await will wait till the response is received from server
+      const response = await fetch("http://localhost:3000/movies",{ // await will wait till the response is received from server
       method: "POST",
       body: JSON.stringify(movie), // convert json object to string
       headers : {
@@ -158,6 +165,7 @@ const fetchMoviesHandler = useCallback(async () =>  {
       </section>
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
+        <button onClick={clickMultipleTimes}>Click Multiple Times</button>
       </section>
       <section>
         {content}
