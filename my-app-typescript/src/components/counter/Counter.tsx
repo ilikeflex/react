@@ -20,6 +20,9 @@ export const Counter: React.FC<Props> = (props:Props) => {
     return (
       <p>
         Clicked: {props.value} times
+        <br></br>
+        Value From Epic: {props.valueFromEpic} 
+        <br></br>
         {' '}
         <button onClick={props.onIncrement}>
           +

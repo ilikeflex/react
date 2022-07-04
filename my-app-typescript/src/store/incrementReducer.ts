@@ -14,15 +14,18 @@ import { IRootState } from "./rootState"
  * we use a switch statement, but it's not required.
  */
 //TODO -> How to pass intital state if the initial state is big object
-export function counterReducer(state:IRootState = { value: 0 }, action : any) {
+export function counterReducer(state:IRootState = { value: 0, valueFromEpic: 'NULL' }, action : any) {
   console.log(`Action Type= ${action.type}`)
   switch (action.type) {
     case ActionsConstants.INCREMENT:
-      return { value: state.value + 1 }
+      return { ...state, value: state.value + 1 }
     case ActionsConstants.DECREMENT:
-      return { value: state.value - 1 }
+      return { ...state, value: state.value - 1 }
     case ActionsConstants.CUSTOM_INCREMENT:
-      return { value: state.value + action.value }
+      return { ...state, value: state.value + action.value }
+    case ActionsConstants.PONG:
+      let newState = { ...state, valueFromEpic: action.data }
+      return newState;
     default:
       return state
   }

@@ -6,8 +6,11 @@ import { ActionsConstants } from "../action/actions";
 
 
 const mapState = (state: RootState) => {
-  console.log('Counter maptoState is called -> Counter is refreshed')
-  return {value: state.value}
+  console.log(` Counter maptoState is called -> Counter is refreshed ${JSON.stringify(state)}` )
+  return {
+    value: state.value,
+    valueFromEpic: state.valueFromEpic
+  }
 }
 
 const mapDispatch = {
@@ -19,6 +22,7 @@ const mapDispatch = {
     }),
     runEpic: () => ({
       type: ActionsConstants.PING,
+      data: 'epicParameter'
     })
 
 }
@@ -29,6 +33,7 @@ const connector = connect(mapState, mapDispatch);
 //values which are coming from State
 interface StateProps {
   value: number;
+  valueFromEpic: string
 }
 
 //action dispatcher
