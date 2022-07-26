@@ -79,7 +79,7 @@ function App() {
 
 //Stpe 3: Add Hooks
 //useCallBack and UseEffect
-// Notice fetchMoviesHandler does not have any dependency..No external state
+//Notice fetchMoviesHandler does not have any dependency..No external state
 const fetchMoviesHandler = useCallback(async () =>  {
     setIsloading(true);
     try{

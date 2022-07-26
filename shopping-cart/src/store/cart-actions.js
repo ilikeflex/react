@@ -10,7 +10,8 @@ export const fetchCartData = () => {
         //this will state for the complete application
         console.log('fetchCartData  getState ' + JSON.stringify(state));
 
-       const response = await fetch("https://react-app-a5e65-default-rtdb.firebaseio.com/cart.json");
+       //const response = await fetch("https://react-app-a5e65-default-rtdb.firebaseio.com/cart.json");
+       const response = await fetch("http://localhost:3000/cart");
 
        if(!response.ok) {
             throw new Error('In initialization Get Cart Data Failed.');
@@ -50,8 +51,9 @@ export const sendCartData = (cart) => {
             };
           
             dispatch(cartSliceAction.showNotification(showPendingNotification));
-        
-            const response = await fetch("https://react-app-a5e65-default-rtdb.firebaseio.com/cart.json",
+            
+            //const response = await fetch("https://react-app-a5e65-default-rtdb.firebaseio.com/cart.json",
+            const response = await fetch("http://localhost:3000/cart",
               { 
                 method: 'PUT',
                 body: JSON.stringify({

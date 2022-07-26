@@ -1,48 +1,42 @@
 {
-    "access" : [{
-     "id": 55,
-      "hr" : false,
-      "reports" : true
-    }],
-    "cart" : {
-      "items" : [ {
-        "description" : "This is a second product - amazing!",
-        "id" : 2,
-        "price" : 16,
-        "quantity" : 1,
-        "title" : "Test2",
-        "total" : 16
-      } ],
-      "totalQuantity" : 1
-    },
-    "user" :[ {
-      "country" : "US",
-      "dept" : "finance",
-      "designation" : "Developer",
-      "id" : 55,
-      "name" : "Alex55",
-      "state" : "NJ"
+  "access": [
+    {
+      "id": 55,
+      "hr": false,
+      "reports": true
+    }
+  ],
+  "cart": {},
+  "user": [
+    {
+      "country": "US",
+      "dept": "finance",
+      "designation": "Developer",
+      "id": 55,
+      "name": "Alex55",
+      "state": "NJ"
     },
     {
-        "country" : "US",
-        "dept" : "finance",
-        "designation" : "Developer",
-        "id" : 56,
-        "name" : "Alex56",
-        "state" : "NJ"
-      }],
-    "movies" : [
-      {
-        "key": 1,
-        "title" : "Hello World",
-        "release_date": "01/01/2022",
-        "openingText": "With your permission we and our partners may use precise geolocation data and identification through device scanning. You may click to consent to our and our partners’ processing as described above. Alternatively you may access more detailed information and change your preferences before consenting or to refuse consenting.          Please note that some processing of your personal data may not require your consent, but you have a right to object to such processing. Your preferences will apply to this website only. You can change your preferences at any time by returning to this site or visit our"
-      },
-      {
-        "key": 2,
-        "title" : "Hello World 2",
-        "release_date": "01/01/2022",
-        "openingText": "With your permission we and our partners may use precise geolocation data and identification through device scanning. You may click to consent to our and our partners’ processing as described above. Alternatively you may access more detailed information and change your preferences before consenting or to refuse consenting.          Please note that some processing of your personal data may not require your consent, but you have a right to object to such processing. Your preferences will apply to this website only. You can change your preferences at any time by returning to this site or visit our"
-      }
-    ]
-  }
+      "country": "US",
+      "dept": "finance",
+      "designation": "Developer",
+      "id": 56,
+      "name": "Alex56",
+      "state": "NJ"
+    }
+  ],
+  "movies": [
+    {
+      "key": 1,
+      "title": "Hello World",
+      "release_date": "01/01/2022",
+      "openingText": "With your permission we and our partners may use precise geolocation data and identification through device scanning. You may click to consent to our and our partners’ processing as described above. Alternatively you may access more detailed information and change your preferences before consenting or to refuse consenting.          Please note that some processing of your personal data may not require your consent, but you have a right to object to such processing. Your preferences will apply to this website only. You can change your preferences at any time by returning to this site or visit our"
+    },
+    {
+      "key": 2,
+      "title": "Hello World 2",
+      "release_date": "01/01/2022",
+      "openingText": "With your permission we and our partners may use precise geolocation data and identification through device scanning. You may click to consent to our and our partners’ processing as described above. Alternatively you may access more detailed information and change your preferences before consenting or to refuse consenting.          Please note that some processing of your personal data may not require your consent, but you have a right to object to such processing. Your preferences will apply to this website only. You can change your preferences at any time by returning to this site or visit our"
+    }
+  ]
+}
