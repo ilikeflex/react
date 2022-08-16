@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState , memo , useContext} from "react";
+import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
+import { SpeakerContext, SpeakerProvider } from "../contexts/SpeakerContext";
+import { SpeakerDelete } from "./SpeakerDelete";
 
-function Session({ title, room }) {
+const Session = ({ title, room }) =>{
     return (
       <span className="session w-100">
         {title} <strong>Room: {room.name}</strong>
@@ -8,15 +11,31 @@ function Session({ title, room }) {
     );
   }
   
-  function Sessions({ sessions }) {
+  const Sessions = () => {
+    const { eventYear } = useContext(SpeakerFilterContext);
+    const { speaker : { sessions }} = useContext(SpeakerContext);
     return (
       <div className="sessionBox card h-250">
-        <Session {...sessions[0]} />
+        {
+          sessions.filter((session)=>{
+            return session.eventYear === eventYear
+          })
+          .map((session) => {
+            return (
+              <div className="session w-100" key={session.id}>
+              <Session {...session} />
+            </div>
+            )
+          })
+        }
+        
       </div>
     );
   }
   
-  function SpeakerImage({ id, first, last }) {
+  const SpeakerImage = () => {
+    const { speaker : { id, first, last }} = useContext(SpeakerContext);
+
     return (
       <div className="speaker-img d-flex flex-row justify-content-center align-items-center h-300">
         <img
@@ -30,9 +49,13 @@ function Session({ title, room }) {
   }
 
 
-  function SpeakerFavorite({ favorite, onFavoriteToggle }) {
+  const SpeakerFavorite = () => {
 
     const [ inTransition , setInTransition ] = useState(false);
+
+    const { updateRecord, speaker  } = useContext(SpeakerContext);
+
+    const { favorite } = speaker;
 
     function doneCallBack() {
       setInTransition(false);
@@ -43,7 +66,7 @@ function Session({ title, room }) {
       <div className="action padB1">
         <span onClick={() => { 
                 setInTransition(true);
-                return onFavoriteToggle(doneCallBack) }}>
+                return updateRecord({ ...speaker, favorite: !speaker.favorite},doneCallBack) }}>
           <i
             className={
               favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"
@@ -58,15 +81,14 @@ function Session({ title, room }) {
     );
   }
   
-  function SpeakerDemographics({
-    first,
-    last,
-    bio,
-    company,
-    twitterHandle,
-    favorite,
-    onFavoriteToggle
-  }) {
+  const SpeakerDemographics = () => {
+
+    const { speaker : {first,
+      last,
+      bio,
+      company,
+      twitterHandle}  } = useContext(SpeakerContext);
+
     return (
       <div className="speaker-info">
         <div className="d-flex justify-content-between mb-3">
@@ -75,7 +97,7 @@ function Session({ title, room }) {
           </h3>
         </div>
 
-        <SpeakerFavorite favorite={favorite} onFavoriteToggle={onFavoriteToggle}></SpeakerFavorite>
+        <SpeakerFavorite></SpeakerFavorite>
 
         <div>
           <p className="card-description">{bio}</p>
@@ -93,23 +115,37 @@ function Session({ title, room }) {
       </div>
     );
   }
-  
+
+  const areEqualSpeaker = (prevProps, nextProps) => {
+    const result = prevProps.speaker.favorite === nextProps.speaker.favorite
+    //console.log(` areEqualSpeaker Prev=${prevProps.speaker.favorite}, Next=${nextProps.speaker.favorite} , Result=${result}`)
+    return result;
+  }
 
   //https://stackoverflow.com/questions/49470037/how-to-pass-several-props-in-spread-operator-in-react
   //How to pass the multiple objects using spread operator
-  function Speaker({ speaker, showSessions, onFavoriteToggle }) {
-    const { id, first, last, sessions } = speaker;
+  const Speaker = memo(function Speaker({ speaker, updateRecord, insertRecord, deleteRecord }) {
+    //console.log(`speaker=${speaker.first} ${speaker.last}`);
+    const {  showSessions } = useContext(SpeakerFilterContext)
     return (
+      <SpeakerProvider speaker={speaker} 
+      updateRecord={updateRecord} 
+      insertRecord={insertRecord}
+      deleteRecord={deleteRecord}>
       <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
         <div className="card card-height p-4 mt-4">
-          <SpeakerImage id={id} first={first} last={last} />
+          <SpeakerImage />
           { /*<SpeakerDemographics {...speaker} {...onFavoriteToggle} /> */}
-          <SpeakerDemographics {...speaker} onFavoriteToggle={onFavoriteToggle} />
+          <SpeakerDemographics />
         </div>
         {/*showSessions && <Sessions sessions={sessions} />*/}
-        {showSessions === true ? <Sessions sessions={sessions} /> : null}
+        {showSessions === true ? <Sessions/> : null}
+        <SpeakerDelete/>
       </div>
+      </SpeakerProvider>
     );
-  }
+  }, areEqualSpeaker);
   
+  
+
   export default Speaker;

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { useContext } from "react"
 import { ThemeContext, ThemeProvider } from "../contexts/ThemeContext"
 
 
@@ -15,8 +15,11 @@ export const Layout = ({startingTheme, children}) => {
 export const LayoutNoThemeProvider = ({children}) => {
 
     const { theme } = useContext(ThemeContext);
+    
+    console.log(`LayoutNoThemeProvider theme = ${theme}`)
+
     return (
-        
+                
         <div
         className={
           theme === "light" ? "container-fluid light" : "container-fluid dark"

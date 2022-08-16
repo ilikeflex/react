@@ -74,10 +74,78 @@ const useRequestDelay = (delayTime = 1000, initialRecords = []) =>{
 
     }
 
+
+    const insertRecord = (record,doneCallBack) => {
+
+      const originalRecords = [...data];
+
+      const speakersDataNew = [ ...data, record]
+
+
+      async function delayFunction () {
+        try {
+          //optimistic UI -> Assuming function will return data successfully from server
+          setData(speakersDataNew);
+          await delay(delayTime);
+          if(doneCallBack)
+            doneCallBack();
+        }
+        catch(e){
+          
+          if(doneCallBack)
+            doneCallBack();
+
+          setData(originalRecords);  
+
+          console.log(`Error in updating record = ${e} ` )
+          setError(e);
+        }
+      }
+  
+      return delayFunction();
+
+    }
+
+    const deleteRecord = (deleteRecord,doneCallBack) => {
+
+      const originalRecords = [...data];
+
+      const speakersDataNew = data.filter((record) => {
+        return record.id === deleteRecord.id ? false : true
+      })
+
+
+      async function delayFunction () {
+        try {
+          //optimistic UI -> Assuming function will return data successfully from server
+          setData(speakersDataNew);
+          await delay(delayTime);
+          if(doneCallBack)
+            doneCallBack();
+        }
+        catch(e){
+          
+          if(doneCallBack)
+            doneCallBack();
+
+          setData(originalRecords);  
+
+          console.log(`Error in updating record = ${e} ` )
+          setError(e);
+        }
+      }
+  
+      return delayFunction();
+
+    }
+
+
       return {
         data, requestStatus,
         error,
-        updateRecord
+        updateRecord,
+        insertRecord,
+        deleteRecord
     }
 }
 
