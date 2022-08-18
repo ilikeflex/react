@@ -1,16 +1,20 @@
-import { Header } from "./Header";
+
 import { Speakers } from "./Speakers";
 
 import { Layout } from "./Layout";
+import { AuthProvider } from "../contexts/AuthContext";
+import Header from "./Header";
 
 
 
 export const App = () => {
-    return (        
+    return ( 
+        <AuthProvider initialLoggedInUser="Ronald">
         <Layout startingTheme='light'>
-            <Header></Header>   
+            <Header></Header>
             <Speakers></Speakers>
         </Layout>
+        </AuthProvider>       
     )
 
 }

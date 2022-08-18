@@ -125,7 +125,7 @@ const Session = ({ title, room }) =>{
   //https://stackoverflow.com/questions/49470037/how-to-pass-several-props-in-spread-operator-in-react
   //How to pass the multiple objects using spread operator
   const Speaker = memo(function Speaker({ speaker, updateRecord, insertRecord, deleteRecord }) {
-    //console.log(`speaker=${speaker.first} ${speaker.last}`);
+    console.log(`speaker=${speaker.first} ${speaker.last}`);
     const {  showSessions } = useContext(SpeakerFilterContext)
     return (
       <SpeakerProvider speaker={speaker} 

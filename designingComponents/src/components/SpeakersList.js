@@ -5,7 +5,7 @@ import { data as initialData } from "../../SpeakerData";
 import ReactPlaceholder from "react-placeholder/lib";
 import { useContext } from "react";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
-import { SpeakerAdd } from "./SpeakerAdd";
+import SpeakerAdd  from "./SpeakerAdd";
 
 //Java Destructuring
 //https://dmitripavlutin.com/javascript-object-destructuring/#:~:text=The%20object%20destructuring%20is%20a%20useful%20JavaScript%20feature,a%20default%20value%20if%20the%20property%20doesn%27t%20exist

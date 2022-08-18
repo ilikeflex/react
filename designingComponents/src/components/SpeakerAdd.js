@@ -1,6 +1,14 @@
 import React from "react"
+import { AuthContext } from "../contexts/AuthContext";
+import { withAuth } from "./withAuth";
 
-export const SpeakerAdd = ( { eventYear, insertRecord }) => {
+const SpeakerAdd = ( { eventYear, insertRecord, loggedInUser }) => {
+
+  //const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
+  console.log(`SpeakerAdd loggedInUser = ${loggedInUser}`)
+
+   if( loggedInUser == null || loggedInUser == undefined || loggedInUser.length == 0 )
+    return null;
 
     return (
         <a href="#" className="addSes">
@@ -33,3 +41,5 @@ export const SpeakerAdd = ( { eventYear, insertRecord }) => {
     )
 
 }
+
+export default withAuth(SpeakerAdd);
