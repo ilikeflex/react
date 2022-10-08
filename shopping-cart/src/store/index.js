@@ -8,7 +8,7 @@ const reducer = {
 }
 
 const store = configureStore({reducer:reducer});
-console.log('store store ' + store.getState());
+console.log('store store ' , store.getState());
 
 export default store; 
 

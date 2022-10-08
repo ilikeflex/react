@@ -1,0 +1,24 @@
+.stock-table {
+    display: flex;
+    width: 100%;
+}
+
+.flex-item0, 
+.flex-item1, 
+.flex-item2,
+.flex-item3, 
+.flex-item4, 
+.flex-item5, 
+.flex-item6 {
+    border: 1px black solid;
+    flex: 1 1 0;
+}
+
+
+.pos{
+    background-color: green;
+}
+
+.neg{
+    background-color: red;
+}

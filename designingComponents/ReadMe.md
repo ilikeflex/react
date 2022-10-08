@@ -17,3 +17,15 @@ Extract from the above link
 
 Note:
 //Unlike the shouldComponentUpdate() method on class components, the areEqual function returns true if the props are equal and false if the props are not equal. This is the inverse from shouldComponentUpdate.
+
+TypeScript For useContext
+https://app.pluralsight.com/guides/using-react's-context-api-with-typescript
+
+Changing Style Depending upon the properties
+https://app.pluralsight.com/guides/typescript-pass-function-react
+
+Ref and forward Ref
+https://app.pluralsight.com/guides/using-react-refs-typescript
+
+Add TypeScript to this course
+https://app.pluralsight.com/guides/higher-order-composition-typescript-react

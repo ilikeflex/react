@@ -1,0 +1,1 @@
+this was the old way to wrtie code befor typescript

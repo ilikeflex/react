@@ -11,6 +11,8 @@ import { Invoice } from './routes/invoice';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+//https://v5.reactrouter.com/web/api/HashRouter
+
 root.render(
   <React.StrictMode>
 
