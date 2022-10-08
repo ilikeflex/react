@@ -4,6 +4,7 @@ npm i webpack webpack-cli -D
 /* Each webapck command start with npx */
 
 //will generate all files combined in dist folder
+
 npx webpack
 
 //Help for watch command
