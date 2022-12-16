@@ -12,9 +12,11 @@ npx webpack
 npx webpack help --watch
 
 
-//basic aommand to create webpack config file
+//basic command to create webpack config file
 
-npx webpack init //creates a big file with lots of default settings. Advised not to run the command
+npx webpack init 
+
+//creates a big file with lots of default settings. Advised not to run the command
 
 
 //get the version of webpack
@@ -40,11 +42,15 @@ npm i webpack-dev-server -D
 
 npx webapack serve
 
+Runs on  http://localhost:8080/
+
 
 //Loading Babel
+
 npm i -D babel-loader @babel/core @babel/preset-env
 
 //install type script and loader
+
 npm i -D typescript ts-loader
 
 //install webpack plugin to copy html

@@ -4,12 +4,17 @@ const path = require("path");
 let production = process.env.NODE_ENV === "production";
 
 let config = {
+  /* Multiple Entry Points
   entry: {
     index: "./src/index", 
     home: "./src/home"
-  },
+  }, */
+
+  //Single Entry Point
+  entry: ["./src/index", "./src/home"],
+
   output: {
-    filename: "[name].js",
+    filename: "main.js",
     path: path.resolve(__dirname, "dist"),
     clean: true, //delete existing files in dist folder
   },
@@ -49,6 +54,7 @@ let config = {
   devtool: "inline-source-map",
   mode: "development", //process.env.NODE_ENV === "production" ?  "production" : "development"
   devServer: {
+    //liveReload: false  ( This will shut down live reloading )
     watchFiles: ["src/**/*","index.html"],
     static: "./dist",
   },
