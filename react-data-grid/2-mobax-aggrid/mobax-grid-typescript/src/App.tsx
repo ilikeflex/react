@@ -4,6 +4,7 @@ import './App.css';
 import { CarsGrid } from './components/CarsGrid';
 import { CarsGridMobax } from './components/CarsGridMobax';
 import { GridRecords } from './mobox/GridRecords';
+import { SampleGrid } from './components/SampleGrid';
 
 const gridRecords:GridRecords = new GridRecords();
 
@@ -31,6 +32,7 @@ function App() {
       <div>
         <CarsGrid></CarsGrid>
         <CarsGridMobax records={gridRecords}></CarsGridMobax>
+        <SampleGrid/>
       </div>
     
   );

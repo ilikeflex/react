@@ -46,6 +46,7 @@ export class GridRecords {
 
         //const newRecord:ICar = { "make": "Porsche1", "model": "Boxter", "price": 7200011 };
         //this.records[this.records.length] = newRecord;
-        this.records.push(newRecord);
+        //this.records.push(newRecord);
+        this.records = [ ...this.records, newRecord]
     }
 }
