@@ -8,6 +8,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 import { GridRecords, ICar } from '../mobox/GridRecords';
 
+//store passed as property
 export const CarsGridMobax = observer(({records}:{records:GridRecords}) => {
 
     const [colDefs, setColDefs] = useState([
@@ -19,19 +20,15 @@ export const CarsGridMobax = observer(({records}:{records:GridRecords}) => {
     
     //Change the record in the gird.
     React.useEffect(() => {
-        /* fetch('https://www.ag-grid.com/example-assets/row-data.json')
-            .then(result => result.json())
-            .then(rowData => setRowData(rowData)) */
             setTimeout(() => {
                 console.log('New Record Inserted')
                 const newRecord:ICar = { "make": "Porsche1", "model": "Boxter", "price": 7200011 };
-                records.changeRecords(newRecord);
-                //setRowData(records.getRecords());
+                records.changeRecords(newRecord);                
             }, 5000);
     }, [records]);
 
    return (
-       <div className="ag-theme-alpine" style={{height: 400, width: 600}}>   
+       <div className="ag-theme-alpine" style={{height: 200, width: 600}}>   
            <h1>Yahoo</h1>
            <AgGridReact
            defaultColDef={{sortable: true, filter: true }}

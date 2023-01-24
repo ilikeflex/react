@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { observable, action, makeAutoObservable, toJS } from 'mobx';
+import { observable, action, makeAutoObservable, toJS, computed } from 'mobx';
 import { AgGridReact } from 'ag-grid-react';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
@@ -13,35 +13,46 @@ interface IEmployee {
 }
 
 class MyStore {
-  gridData: IEmployee[] = [
+  private _gridData: IEmployee[] = [
     { id: 1, name: 'John' },
     { id: 2, name: 'Jane' }
   ];
+  
+  private _isStoreChanged:boolean = false;
 
   constructor() {
-    makeAutoObservable(this, {
-      gridData: observable,
-      updateRecord: action,
-      deleteRecord: action
-    });
+    makeAutoObservable(this);
+  }  
+
+  public get gridData(): IEmployee[] {
+    return this._gridData;
+  }
+
+  public set gridData(value: IEmployee[]) {
+    this._gridData = value;
+  }
+
+  set isRecordsChanged(value:boolean) {
+    this._isStoreChanged =  value;
+  }
+
+  get isRecordsChanged():boolean {
+    return this._isStoreChanged;
   }
 
   updateRecord(id: number, newData: { name: string }) {
     const index = this.gridData.findIndex((record) => record.id === id);
-    console.log('Total Length=',this.gridData.length,'content',this.gridData);
-    console.log('Before index=',index,'dataElement',this.gridData[index]);
-    //this.gridData[index] = { ...this.gridData[index], ...newData };
-    this.gridData[index] = { ...this.gridData[index], name: 'XX John' };
-    console.log('After index=',index,'dataElement',this.gridData[index]);
-    this.gridData[index] = { id: 1, name: 'XX John' }
-    //this.gridData[index].name = 'XX John';
+    this.gridData[index] = { ...this.gridData[index], ...newData };
+    this.isRecordsChanged = true;    
   }
 
   deleteRecord(id: number) {
+    this.isRecordsChanged = true;
     this.gridData = this.gridData.filter((record) => record.id !== id);
   }
 }
 
+//global store
 const store = new MyStore();
 
 const MyComponent = observer(() => {
@@ -51,7 +62,7 @@ const MyComponent = observer(() => {
 
   return (
     <div>
-      <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
+      <div className="ag-theme-alpine" style={{ height: 200, width: 600 }}>
         <AgGridReact rowData={toJS(gridData)} columnDefs={colDefs}></AgGridReact>
       </div>
       <button onClick={() => store.updateRecord(1, { name: 'Updated John' })}>
@@ -61,5 +72,23 @@ const MyComponent = observer(() => {
     </div>
   );
 })
+
+
+export const StoreObserver = observer(() => {
+
+  console.log('store.isRecordsChanged', store.isRecordsChanged);
+
+  const buttonClick = () => {
+    alert('Store Clicked');
+  }
+
+  return (
+    <div>
+      <button onClick={buttonClick} disabled={!store.isRecordsChanged}>Enable When Grid Change</button>
+    </div>
+  );
+})
+
+
 
 export { MyComponent as SampleGrid };
