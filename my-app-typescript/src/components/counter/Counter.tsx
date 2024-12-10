@@ -1,3 +1,4 @@
+import { ActionsConstants } from "../action/actions";
 import { Props } from "./CounterContainer";
 
 //export const Counter: React.FC = () => {
@@ -15,6 +16,13 @@ export const Counter: React.FC<Props> = (props:Props) => {
 
     const runEpic = () => {
       props.runEpic();
+    }
+
+    const dispatchIncrement = () => { 
+      props.dispatch({
+        type: ActionsConstants.CUSTOM_INCREMENT,
+        value: 10
+      })
     }
 
     return (
@@ -45,6 +53,9 @@ export const Counter: React.FC<Props> = (props:Props) => {
         </button>
         <button onClick={runEpic}>
           Try Epic
+        </button>
+        <button onClick={dispatchIncrement}>
+          Dispatch Increment
         </button>
       </p>
     );

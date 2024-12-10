@@ -13,7 +13,9 @@ const mapState = (state: RootState) => {
   }
 }
 
-const mapDispatch = {
+//https://react-redux.js.org/api/connect ( Documentation Link )
+//Pasing Without explicit parameters(dispatch, ownProps)
+/* const mapDispatch = {
     onIncrement: () => ({ type: ActionsConstants.INCREMENT }),
     onDecrement: () => ({ type: ActionsConstants.DECREMENT }),
     onIncrementByCustomValue: () => ({
@@ -25,7 +27,21 @@ const mapDispatch = {
       data: 'epicParameter'
     })
 
-}
+} */
+
+const mapDispatch = (dispatch, ownProps) => ({
+  onIncrement: () => ({ type: ActionsConstants.INCREMENT }),
+  onDecrement: () => ({ type: ActionsConstants.DECREMENT }),
+  onIncrementByCustomValue: () => ({
+      type: ActionsConstants.CUSTOM_INCREMENT,
+      value: 10
+  }),
+  runEpic: () => ({
+    type: ActionsConstants.PING,
+    data: 'epicParameter'
+  }),
+  dispatch
+})
 
 const connector = connect(mapState, mapDispatch);
 
@@ -42,6 +58,7 @@ interface DispatchProps {
   onDecrement: () => void;
   onIncrementByCustomValue: () => void;
   runEpic: () => void;
+  dispatch: any;
 }
 
 //own props
@@ -49,7 +66,7 @@ interface OwnProps {
   backgroundColor: string
 }
 
-export type Props = StateProps & DispatchProps & OwnProps
+export type Props = StateProps & DispatchProps & OwnProps;
 
 export default connector(Counter)
 

@@ -1,11 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch } from 'react-redux'
 import { ChildComponentA } from "./ChildComponentA";
 import { ChildComponentB } from "./ChildComponentB";
+import { ActionsConstants } from "../action/actions";
 
 export const SampleComponent : React.FC = () => {
 
     const [ counter, setCounter ] = useState(0);
     const [ passToComponentB, setPassToComponentB ] = useState('InitialValue');
+    const dispatch = useDispatch()
 
     const mybuttonClick = () => {
         console.log("Click Me Clicked");
@@ -45,12 +48,20 @@ export const SampleComponent : React.FC = () => {
     },[counter]);
     
 
+    const dispatchIncrement = () => { 
+        dispatch({
+          type: ActionsConstants.CUSTOM_INCREMENT,
+          value: 100
+        })
+      }
+
   //memo child not rendering when state update, only render child props update.
   const memoChildComponentB = useMemo(() => <ChildComponentB name={passToComponentB} onIncrement={childBToParent}></ChildComponentB>,
    [passToComponentB]);
 
     return (
         <div>
+           <button onClick={dispatchIncrement}>Increment Counter From Another Component</button> 
            <button onClick={mybuttonClick}>Click Me</button>     
            <label>How many times {counter} clicked </label>
            {/** ChildComponentA will always be refreshed when parent component is rendered */}
