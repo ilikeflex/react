@@ -4,7 +4,8 @@ import { SpeakersRenderProps } from "../src/components/SpeakerRenderProps";
 export const Speakers = () => {
       return (
         <SpeakersRenderProps>
-            {({speakers})=>{
+            {({speakers, newArray})=>{
+                console.log(` newArray = `, newArray);
                 return (
                     <div>
                         {

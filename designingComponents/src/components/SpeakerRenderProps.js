@@ -8,8 +8,15 @@ export const SpeakersRenderProps = (props) => {
         { imageSrc: "speaker-10803", name: "Eugene Chuvyrov" },
       ];
 
+    const newArray = [
+      { imageSrc: "speaker-1124", name: "Douglas Crockford2" },
+      { imageSrc: "speaker-1530", name: "Tamara Baker2" },
+      { imageSrc: "speaker-10803", name: "Eugene Chuvyrov2" },
+    ];
+
     return props.children({
-            speakers:speakers
+            speakers:speakers,
+            newArray
     });
 
   }
